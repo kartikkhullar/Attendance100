@@ -1,2 +1,2 @@
 echo off
-"C:\Users\khull\AppData\Local\Programs\Python\Python38-32\python.exe" "E:\Programming\Python\Attendance100\Attendance100.py"
+"<Path to python.exe>\python.exe" "<Path to this repository>\Attendance100\Attendance100.py"
