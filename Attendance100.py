@@ -20,44 +20,44 @@ def send_mail(day, curr_time, link):
 
     server.sendmail(sent_from, to, email_text)
     server.quit()
+
+def find_next_class(day):
+    current_time = datetime.now().strftime("%H:%M")
+    curr_time = time.strptime(current_time, "%H:%M")
     
+    #Replace with COMPLETE path to attendance file below.
+    with open(r'E:\Programming\Python\Attendance100\timetable.csv', 'r') as timetable:
+        reader = csv.reader(timetable)
+        for row in reader:
+            class_time = time.strptime(str(row[0]), "%H:%M")
+            
+            if class_time >= curr_time and row[day+1] == "exit":
+                print("No more classes for today.")
+                exit()
+            elif class_time >= curr_time and row[day+1] != "NIL":
+                print("Next Class at " + row[0])
+                return class_time, row[day+1]
+    
+    print("Classes already over.")
+    exit()
+
 Weekdays = ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
 day = datetime.today().weekday()
 print(Weekdays[day])
 
-end_time = time.strptime("17:10", "%H:%M")
-
 while True:
-    #Replace with COMPLETE path to attendance file below.
-    with open(r'E:\Programming\Python\Attendance100\timetable.csv', 'r') as timetable:
-        reader = csv.reader(timetable)
-        
-        for row in reader:    
-            now = datetime.now()
-            current_time = now.strftime("%H:%M")
-            curr_time = time.strptime(current_time, "%H:%M")
-            print("Current Time =", current_time)
-            if (curr_time > end_time):
-                print("No classes for now.")
-                exit()
-            link = ""
+    class_time, link = find_next_class(day) 
+    while True:
+        current_time = datetime.now().strftime("%H:%M")
+        curr_time = time.strptime(current_time, "%H:%M")
+        print("Current Time : " + current_time)
 
-            class_time = time.strptime(str(row[0]), "%H:%M")
-            
-            if class_time == curr_time:
-                if row[day+1] == "exit":
-                    print("End of the day. :D")
-                    exit()
-                elif row[day+1] == "NIL":
-                    time.sleep(50 * 60)
-                else:
-                    link = row[day + 1]
-                    print("Class at " + current_time)
-                    os.system("start "" " + link)
-                    print("Joined class at link : " + link)
-                    #send_mail(Weekdays[day], current_time, link)
-                    time.sleep(50 * 60)
-            else:
-                continue
-            
-    time.sleep(60)
+        if class_time == curr_time:
+            print("Class at " + current_time)
+            os.system("start "" " + link)
+            print("Joined class at link : " + link)
+            time.sleep(60)
+            #send_mail(Weekdays[day], current_time, link)
+            break
+
+        time.sleep(60)
