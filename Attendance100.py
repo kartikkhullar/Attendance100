@@ -104,6 +104,7 @@ def showCSV():
 
 def final():
     saveFile()
+    root.destroy()
     attend_class(apps[2])
 
 def saveFile():
