@@ -34,7 +34,7 @@ def find_next_class(timetable_location, day):
             if class_time >= curr_time and row[day+1] == "exit":
                 print("No more classes for today.")
                 exit()
-            elif class_time >= curr_time and row[day+1] != "NIL":
+            elif class_time >= curr_time and row[day+1] != "":
                 print("Next Class at " + row[0])
                 return class_time, row[day+1]
     
