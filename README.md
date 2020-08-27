@@ -10,11 +10,6 @@ Automation for scheduled zoom meetings.
 1. Fill the zoom meeting links in ```timetable.csv```.
 1. Enter the following paths in the batch file (```attendance100.bat```) --> ```"<PATH to python.exe>\python.exe" "<PATH to python script>\Attedance100.py" "<PATH to timetable file>\timetable.csv"``` without ```< >```(obviously).
 
-### Notes
-* ```timetable.csv``` column number 1 to 6 denote Monday to Saturday.
-* Days where schedule is over early, should end with ```exit``` in ```timetable.csv```. (See timetable.csv for reference)
-* Code for email notification is commented out for ease of use to users. Anyone interested can uncomment it and fill in his mail server login credentials.
-
 ### Usage
 
 Run ```attendance100.bat``` manually.
@@ -22,6 +17,11 @@ Run ```attendance100.bat``` manually.
 OR
 
 **For complete automation** create ```New Task``` in ```Task Scheduler``` to schedule and run ```attendance100.bat```.
+
+### Notes
+* ```timetable.csv``` column number 1 to 6 denote Monday to Saturday.
+* Days where schedule is over early, should end with ```exit``` in ```timetable.csv```. (See timetable.csv for reference)
+* Code for email notification is commented out for ease of use to users. Anyone interested can uncomment it and fill in his mail server login credentials.
 
 ### Future
 * Might update with more advanced features.
