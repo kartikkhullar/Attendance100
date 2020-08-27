@@ -12,7 +12,7 @@ Automation for scheduled zoom meetings.
 
 ### Usage
 
-Run ```attendance100.bat``` manually.
+Run ```attendance100.bat```.
 
 OR
 
