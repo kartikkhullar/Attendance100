@@ -74,42 +74,37 @@ def attend_class(timetable_location):
 #--------------------------------------------------------------------------------------------------------------
 #UI Code
 root = tk.Tk()
+# apps = []
 
 if os.path.isfile('save.txt'):
     with open('save.txt', 'r') as f:
-        apps = f.read()
-        apps = apps.split(',')
+        temp = f.read()
+        apps = temp.split(',')
 
 if(len(apps) == 0):
-    apps = ["","",""]
+    apps = [""]
 
-def addApp(type,extension,index):
+def addApp(type,extension):
 
     for widget in frame.winfo_children():
         widget.destroy()
 
     filename = filedialog.askopenfilename(initialdir = "/",title = "Select File", filetypes=((type,extension),("all files","*.*")))
-    apps[index] = filename
-    
-    for i in range(3):
-        if(apps[i] == ""):
-            INFO = tk.Label(frame, text = "Please Add all the 3 paths", bg = "red", fg = "black")
-            INFO.pack()
-            break
+    apps[0] = filename
 
     show()
 
 def showCSV():
-    os.startfile(apps[2])
+    os.startfile(apps[0])
 
 def final():
     saveFile()
     root.destroy()
-    attend_class(apps[2])
+    attend_class(apps[0])
 
 def saveFile():
-    if(len(apps) > 3):
-        del apps[3:]
+    if(len(apps) > 1):
+        del apps[1:]
     with open('save.txt', 'w') as f:
         for app in apps:
             f.write(app + ',')
@@ -120,13 +115,7 @@ canvas.pack()
 frame = tk.Frame(root, bg = "#e6e6ff")
 frame.place(relwidth = 0.8, relheight = 0.8,relx = 0.1, rely = 0.1)
 
-pythonFile = tk.Button(root, text="Python File", padx=10, pady =5, fg="white", bg="#263D42", command = lambda: addApp("executables","*.exe",0))
-pythonFile.pack()
-
-PythonScript = tk.Button(root, text="Python Script", padx=10, pady=5, fg="white", bg="#263D42",command = lambda: addApp("Script File","*.py",1))
-PythonScript.pack()
-
-CSV_File = tk.Button(root, text="CSV file", padx=10, pady=5, fg="white", bg="#263D42", command = lambda: addApp("CSV file","*.csv",2))
+CSV_File = tk.Button(root, text="CSV file", padx=10, pady=5, fg="white", bg="#263D42", command = lambda: addApp("CSV file","*.csv"))
 CSV_File.pack()
 
 CSV_check = tk.Button(root, text="Check CSV", padx=10, pady=5, fg="white", bg="#263D42", command = showCSV)
@@ -136,7 +125,8 @@ Proceed = tk.Button(root, text="Attend Class", padx=10, pady=5, fg="white", bg="
 Proceed.pack()
 
 def show():
-    for i in range(3):
+    # print(apps)
+    for i in range(1):
         if(apps[i] == ""):
             INFO = tk.Label(frame, text = "Please Add all the 3 paths", bg = "red", fg = "black")
             INFO.pack()
