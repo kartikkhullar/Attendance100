@@ -121,7 +121,7 @@ CSV_File.pack()
 
 CSV_check = tk.Button(root, text="Check CSV", padx=5, pady=2, fg="white", bg="#263D42", command = showCSV)
 CSV_check.pack()
-CSV_check.place(height=30, width=80)
+CSV_check.place(height=30, width=70)
 
 Proceed = tk.Button(root, text="Automate", padx=5, pady=2, fg="white", bg="#263D42", command = final)
 Proceed.pack()
@@ -138,6 +138,6 @@ def show():
         label.pack()
 
 show()
-
+root.resizable(0, 0)
 root.mainloop()
 saveFile()
