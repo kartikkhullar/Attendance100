@@ -95,7 +95,8 @@ def addApp(type,extension):
     show()
 
 def showCSV():
-    os.startfile(apps[0])
+    if(apps[0] != ""):
+        os.startfile(apps[0])
 
 def final():
     saveFile()
@@ -109,30 +110,31 @@ def saveFile():
         for app in apps:
             f.write(app + ',')
 
-canvas = tk.Canvas(root,height = 400, width = 800, bg = "#ccccff")
+canvas = tk.Canvas(root,height = 100, width = 600, bg = "#ccccff")
 canvas.pack()
 
 frame = tk.Frame(root, bg = "#e6e6ff")
-frame.place(relwidth = 0.8, relheight = 0.8,relx = 0.1, rely = 0.1)
+frame.place(relwidth = 0.8, relheight = 0.3,relx = 0.1, rely = 0.1)
 
-CSV_File = tk.Button(root, text="CSV file", padx=10, pady=5, fg="white", bg="#263D42", command = lambda: addApp("CSV file","*.csv"))
+CSV_File = tk.Button(root, text="Add Timetable", padx=5, pady=2, fg="white", bg="#263D42", command = lambda: addApp("CSV file","*.csv"))
 CSV_File.pack()
 
-CSV_check = tk.Button(root, text="Check CSV", padx=10, pady=5, fg="white", bg="#263D42", command = showCSV)
+CSV_check = tk.Button(root, text="Check CSV", padx=5, pady=2, fg="white", bg="#263D42", command = showCSV)
 CSV_check.pack()
+CSV_check.place(height=30, width=80)
 
-Proceed = tk.Button(root, text="Attend Class", padx=10, pady=5, fg="white", bg="#263D42", command = final)
+Proceed = tk.Button(root, text="Automate", padx=5, pady=2, fg="white", bg="#263D42", command = final)
 Proceed.pack()
 
 def show():
     # print(apps)
-    for i in range(1):
+    for i in range(len(apps)-1):
         if(apps[i] == ""):
-            INFO = tk.Label(frame, text = "Please Add all the 3 paths", bg = "red", fg = "black")
+            INFO = tk.Label(frame, text = "Please add a timetable", bg = "red", fg = "black")
             INFO.pack()
             break
-    for app in apps:
-        label = tk.Label(frame, text = app, bg = "#b3ffb3")
+    for i in range(len(apps)-1):
+        label = tk.Label(frame, text = apps[i], bg = "#b3ffb3")
         label.pack()
 
 show()
