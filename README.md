@@ -8,11 +8,10 @@ Automation for scheduled zoom meetings.
 ### Setup (for Windows)
 1. Download & Install Python from [here](https://www.python.org/ftp/python/3.8.5/python-3.8.5.exe).
 1. Fill the zoom meeting links in ```timetable.csv```.
-1. Enter the following paths in the batch file (```attendance100.bat```) --> ```"<PATH to python.exe>\python.exe" "<PATH to python script>\Attedance100.py" "<PATH to timetable file>\timetable.csv"``` without ```< >```(obviously).
 
 ### Usage
 
-Run ```attendance100.bat```.
+Run ```Attendance100.py```.
 
 OR
 
