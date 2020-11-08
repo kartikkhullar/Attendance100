@@ -17,6 +17,7 @@ Run ```Attendance100.py```.
 * It would be better if zoom application is logged in already so that it doesn't ask for login credentials on joining the link.
 * ```timetable.csv``` column number 1 to 6 denote Monday to Saturday.
 * Days where schedule is over early, should end with ```exit``` in ```timetable.csv```. (See timetable.csv for reference)
+* If the classes for the day are already over then the script would exit immediately after printing a message which says so.
 * Code for email notification is commented out for ease of use to users. Anyone interested can uncomment it and fill in his mail server login credentials.
 
 ### Future
