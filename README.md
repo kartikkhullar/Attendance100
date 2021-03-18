@@ -1,4 +1,4 @@
-# Attendance100 - A fun project
+# Attendance100
 Automation for scheduled zoom meetings.
 
 ### Features
